@@ -42,31 +42,33 @@ export default async function PostsPage({ searchParams }: PageProps) {
   const start = (currentPage - 1) * PAGE_SIZE;
   const visiblePosts = filtered.slice(start, start + PAGE_SIZE);
 
-  return (
-    <main className="mx-auto w-full max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-bold text-gray-900">Blog Posts</h1>
-      <p className="mt-2 text-gray-600">
+    return (
+    <main className="mx-auto w-full max-w-3xl px-4 py-12">
+      <h1 className="font-serif text-4xl leading-[2.75rem] text-ink">
+        Blog posts
+      </h1>
+      <p className="mt-2 text-sm leading-6 text-muted">
         {keyword
-          ? `พบ ${filtered.length} บทความ สำหรับ "${keyword}"`
-          : `ทั้งหมด ${posts.length} บทความ`}
+          ? `พบ ${filtered.length} บทความสำหรับ "${keyword}"`
+          : `${posts.length} บทความ`}
       </p>
 
       <SearchBar defaultValue={keyword} />
 
       {visiblePosts.length === 0 ? (
-        // ไม่พบผลลัพธ์
-        <div className="mt-16 text-center">
-          <p className="text-gray-600">ไม่พบบทความที่ตรงกับคำค้นหา</p>
+        <div className="mt-16">
+          <p className="text-ink">ไม่พบบทความที่ตรงกับคำค้นหา</p>
+          <p className="mt-1 text-sm text-muted">ลองใช้คำอื่น หรือล้างคำค้นหา</p>
           <Link
             href="/posts"
-            className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
+            className="mt-4 inline-block text-sm text-accent hover:brightness-110"
           >
-            ล้างคำค้นหา
+            ดูบทความทั้งหมด
           </Link>
         </div>
       ) : (
         <>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 border-t border-line">
             {visiblePosts.map((post) => (
               <PostCard key={post.id} post={post} />
             ))}

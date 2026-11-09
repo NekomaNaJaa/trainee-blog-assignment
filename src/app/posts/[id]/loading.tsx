@@ -1,39 +1,53 @@
+import { SkeletonLine } from "@/components/Skeleton";
+
 export default function Loading() {
   return (
-    <main className="mx-auto w-full max-w-3xl px-4 py-10">
-      <div className="animate-pulse rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-        {/* ลิงก์กลับ */}
-        <div className="h-5 w-40 rounded bg-gray-200" />
-        {/* title */}
-        <div className="mt-4 h-9 w-3/4 rounded bg-gray-200" />
-        {/* ผู้เขียน */}
-        <div className="mt-2 h-5 w-40 rounded bg-gray-200" />
-        {/* body */}
-        <div className="mt-6 space-y-2.5">
-          <div className="h-4 w-full rounded bg-gray-200" />
-          <div className="h-4 w-full rounded bg-gray-200" />
-          <div className="h-4 w-2/3 rounded bg-gray-200" />
+    <main className="mx-auto w-full max-w-2xl px-4 py-12">
+      <div className="animate-pulse">
+        <SkeletonLine width="w-32" height="h-5" />
+
+        <div className="mt-6 rounded-md border border-line bg-raised p-6 sm:p-8">
+          {/* title 2 บรรทัด พร้อมแถบด้านซ้าย */}
+          <div className="border-l-4 border-line pl-4">
+            <SkeletonLine width="w-full" height="h-10" />
+            <SkeletonLine width="w-1/2" height="h-10" />
+          </div>
+
+          <div className="mt-4">
+            <SkeletonLine width="w-40" height="h-5" />
+          </div>
+
+          {/* body 4 บรรทัด */}
+          <div className="mt-6 border-t border-line pt-6">
+            <SkeletonLine width="w-full" height="h-8" />
+            <SkeletonLine width="w-full" height="h-8" />
+            <SkeletonLine width="w-full" height="h-8" />
+            <SkeletonLine width="w-2/3" height="h-8" />
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <div className="border-l-4 border-line pl-3">
+            <SkeletonLine width="w-40" height="h-8" />
+          </div>
+          <div className="mt-4 space-y-3">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div
+                key={i}
+                className="rounded-md border border-line bg-raised p-4"
+              >
+                <SkeletonLine width="w-1/2" />
+                <SkeletonLine width="w-1/3" height="h-5" />
+                <div className="mt-2">
+                  <SkeletonLine width="w-full" />
+                  <SkeletonLine width="w-full" />
+                  <SkeletonLine width="w-3/4" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-
-      {/* หัวข้อคอมเมนต์ */}
-      <div className="mt-8 h-7 w-48 animate-pulse rounded bg-gray-200" />
-      <ul className="mt-4 space-y-4">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <li
-            key={i}
-            className="animate-pulse rounded-lg border border-gray-200 bg-white p-4"
-          >
-            <div className="h-5 w-1/2 rounded bg-gray-200" />
-            <div className="mt-1 h-3 w-1/3 rounded bg-gray-200" />
-            <div className="mt-2 space-y-1.5">
-              <div className="h-4 w-full rounded bg-gray-200" />
-              <div className="h-4 w-5/6 rounded bg-gray-200" />
-              <div className="h-4 w-2/3 rounded bg-gray-200" />
-            </div>
-          </li>
-        ))}
-      </ul>
     </main>
   );
 }
