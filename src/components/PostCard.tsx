@@ -14,7 +14,7 @@ export default function PostCard({ post }: PostCardProps) {
       </h2>
 
       {/* ตัวอย่างเนื้อหา: ตัดทอนเหลือ 3 บรรทัด */}
-      <p className="mt-3 line-clamp-3 flex-1 text-sm text-gray-600">
+      <p className="mt-3 line-clamp-3 text-sm text-gray-600">
         {post.body}
       </p>
 
