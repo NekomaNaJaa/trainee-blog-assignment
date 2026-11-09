@@ -1,8 +1,10 @@
+import { connection } from "next/server";
 import PostCard from "@/components/PostCard";
 import { getPosts } from "@/lib/api";
 
 export default async function PostsPage() {
   // ดึงข้อมูลฝั่ง server ก่อน render
+  await connection();
   const posts = await getPosts();
 
   return (

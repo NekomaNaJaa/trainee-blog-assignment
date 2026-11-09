@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
+
 import CommentList from "@/components/CommentList";
 import PostDetail from "@/components/PostDetail";
 import { getComments, getPost, getUser, isNotFound } from "@/lib/api";
@@ -10,6 +12,7 @@ interface PageProps {
 }
 
 export default async function PostDetailPage({ params }: PageProps) {
+  await connection();
   const { id } = await params;
   const postId = Number(id);
 
