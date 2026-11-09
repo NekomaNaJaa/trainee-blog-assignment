@@ -37,7 +37,7 @@ export default async function PostDetailPage({ params }: PageProps) {
   ]);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10">
+    <main className="mx-auto w-full max-w-2xl px-4 py-12">
       <PostDetail post={post} authorName={author.name} />
       <CommentList comments={comments} />
     </main>

@@ -7,24 +7,27 @@ interface PostCardProps {
 
 export default function PostCard({ post }: PostCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:shadow-md">
-      {/* ชื่อบทความ: จำกัด 2 บรรทัด */}
-      <h2 className="line-clamp-2 text-lg font-semibold capitalize text-gray-900">
-        {post.title}
-      </h2>
+    <Link
+      href={`/posts/${post.id}`}
+      className="group grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-line py-6 sm:grid-cols-[3rem_1fr]"
+    >
+      {/* เลขบทความ = id จริงจาก API */}
+      <span className="pt-1.5 text-sm tabular-nums text-muted">
+        {String(post.id).padStart(3, "0")}
+      </span>
 
-      {/* ตัวอย่างเนื้อหา: ตัดทอนเหลือ 3 บรรทัด */}
-      <p className="mt-3 line-clamp-3 text-sm text-gray-600">
-        {post.body}
-      </p>
-
-      {/* ลิงก์ไปหน้ารายละเอียด */}
-      <Link
-        href={`/posts/${post.id}`}
-        className="mt-4 inline-block text-sm font-medium text-blue-600 hover:text-blue-800"
-      >
-        อ่านต่อ &rarr;
-      </Link>
-    </article>
+      <div className="min-w-0">
+        <h2 className="line-clamp-2 font-serif text-xl leading-7 text-ink first-letter:uppercase group-hover:text-accent">
+          {post.title}
+        </h2>
+        {/* ตัดเหลือ 2 บรรทัด */}
+        <p className="mt-2 line-clamp-2 text-sm leading-6 text-muted">
+          {post.body}
+        </p>
+        <span className="mt-3 block text-sm leading-5 text-accent">
+          อ่านต่อ
+        </span>
+      </div>
+    </Link>
   );
 }

@@ -8,25 +8,29 @@ interface PostDetailProps {
 
 export default function PostDetail({ post, authorName }: PostDetailProps) {
   return (
-    <article className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-      <Link href="/posts" className="text-sm text-blue-600 hover:text-blue-800">
-        &larr; กลับไปหน้ารายการ
+    <>
+      <Link
+        href="/posts"
+        className="inline-block text-sm leading-5 text-muted hover:text-ink"
+      >
+        กลับไปหน้ารายการ
       </Link>
 
-      {/* ชื่อบทความ */}
-      <h1 className="mt-4 text-3xl font-bold capitalize text-gray-900">
-        {post.title}
-      </h1>
+      <article className="mt-6 rounded-md border border-line bg-raised p-6 sm:p-8">
+        {/* แถบอำพัน + title สีอำพัน */}
+        <h1 className="border-l-4 border-accent pl-4 font-serif text-3xl leading-10 text-accent first-letter:uppercase">
+          {post.title}
+        </h1>
 
-      {/* ชื่อผู้เขียน */}
-      <p className="mt-2 text-sm text-gray-500">
-        เขียนโดย <span className="font-medium text-gray-700">{authorName}</span>
-      </p>
+        <p className="mt-4 text-sm leading-5 text-muted">
+          เขียนโดย <span className="text-ink">{authorName}</span>
+        </p>
 
-      {/* เนื้อหาทั้งหมด */}
-      <p className="mt-6 whitespace-pre-line leading-relaxed text-gray-700">
-        {post.body}
-      </p>
-    </article>
+        {/* ไม่ใช้ whitespace-pre-line: ให้ข้อความไหลต่อเนื่องเป็นย่อหน้า */}
+        <p className="mt-6 border-t border-line pt-6 font-serif text-lg leading-8 text-ink/90 first-letter:uppercase">
+          {post.body}
+        </p>
+      </article>
+    </>
   );
 }

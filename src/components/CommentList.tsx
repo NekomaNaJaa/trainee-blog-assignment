@@ -6,24 +6,22 @@ interface CommentListProps {
 
 export default function CommentList({ comments }: CommentListProps) {
   return (
-    <section className="mt-8">
-      <h2 className="text-xl font-semibold text-gray-900">
-        ความคิดเห็น ({comments.length})
+    <section className="mt-10">
+      <h2 className="border-l-4 border-accent pl-3 font-serif text-2xl leading-8 text-accent">
+        ความคิดเห็น <span className="text-muted">{comments.length}</span>
       </h2>
 
-      <ul className="mt-4 space-y-4">
+      <ul className="mt-4 space-y-3">
         {comments.map((comment) => (
           <li
             key={comment.id}
-            className="rounded-lg border border-gray-200 bg-white p-4"
+            className="rounded-md border border-line bg-raised p-4"
           >
-            <p className="font-medium capitalize text-gray-900">
+            <p className="font-medium leading-6 text-ink first-letter:uppercase">
               {comment.name}
             </p>
-            <p className="text-xs text-gray-500">{comment.email}</p>
-            <p className="mt-2 whitespace-pre-line text-sm text-gray-700">
-              {comment.body}
-            </p>
+            <p className="text-sm leading-5 text-muted">{comment.email}</p>
+            <p className="mt-2 text-sm leading-6 text-ink/80">{comment.body}</p>
           </li>
         ))}
       </ul>
