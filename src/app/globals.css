@@ -1,19 +1,15 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* ชื่อสีใช้ canvas แทน base: base ชนกับ text-base (ขนาดตัวอักษร) ของ Tailwind */
-@theme inline {
+:root {
+  color-scheme: dark;
   --color-canvas: #16181c;
   --color-raised: #1e2127;
   --color-line: #2c3038;
   --color-ink: #e9e5dc;
   --color-muted: #9a9fa8;
   --color-accent: #e3a857;
-  --font-serif: var(--font-newsreader);
-  --font-sans: var(--font-plex);
-}
-
-:root {
-  color-scheme: dark;
 }
 
 /* focus ที่เห็นชัดสำหรับคนใช้คีย์บอร์ด */
